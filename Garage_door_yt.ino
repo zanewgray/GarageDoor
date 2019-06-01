@@ -1,5 +1,5 @@
 // Close switch must be connected to D2
-// D1 is the output for the garade door motor. Hi-low-Hi
+// D1 is the output for the garade door motor. Low-Hi-Low
 
 //On line 18 you must enter your ssid
 //On line 19 you must enter your router password
@@ -23,7 +23,7 @@ void setup() {
   Serial.begin(115200);
   pinMode(statusPin, INPUT_PULLUP);
   pinMode(activatePin, OUTPUT);
-  digitalWrite(activatePin, HIGH);
+  digitalWrite(activatePin, LOW);
   delay(50);
 
   Serial.println();
@@ -122,7 +122,7 @@ void mainPage(WiFiClient& client)
   client.println("<!DOCTYPE HTML>");
   client.println("<html>");
   client.println("<head>");
-  client.println("<title>Garage Door Monitor</title>");
+  client.println("<title>Garage Door</title>");
   client.println("<script>");
   client.println("function GetSwitchState() {");
   client.println("nocache = \"&nocache=\"+ Math.random() * 1000000;");
@@ -158,9 +158,9 @@ void redirect(WiFiClient& client)
 
 void ActivateDoor()
 {
-  digitalWrite(activatePin, LOW);
-  delay(500);
   digitalWrite(activatePin, HIGH);
+  delay(500);
+  digitalWrite(activatePin, LOW);
 }
 
 void doorState(WiFiClient& client){
