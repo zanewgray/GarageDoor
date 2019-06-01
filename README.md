@@ -1,2 +1,2 @@
 # GarageDoor
-Garage project 
+Garage project using NodeMCU ESP8266-12E
